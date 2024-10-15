@@ -9,11 +9,9 @@ func main() {
   r := gin.Default()
   r.Use(static.Serve("/", static.LocalFile("./static", true)))
   r.LoadHTMLGlob("templates/*")
-  // r.GET("/test", func(c *gin.Context) {
-  //   c.HTML(200, "template.html", gin.H{
-  //     "content": "test",
-  //   })
-  // })
-  r.Run()
+  r.GET("/", func(c *gin.Context) {
+    c.HTML(200, "index.html", gin.H{})
+  })
+  r.Run(":80")
 }
 
