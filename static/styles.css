@@ -5,14 +5,15 @@
 }
 
 html, body {
-  height: 100vh;
-  width: 100vw;
-  
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Nerdfont';
+  background-color: var(--accent-light);
+  overflow-x: hidden;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+:root {
+  --accent-light: #d9aaaa;
+  --accent-dark:  #00f;
+  --shadow: #0002;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,25 +30,16 @@ html, body {
   }
 }
 
-
-body {
-  background-color: var(--bg);
-}
-
-p, sub, footer {
+h1, sub, footer {
   text-align: center;
 
-  background: linear-gradient(45deg, #d9aaaa, blue);
+  background: linear-gradient(45deg, var(--accent-light), var(--accent-dark));
   background-clip: text;
   color: transparent;
 
   font-size: min(25vh, 25vw);
   font-weight: bolder;
-  text-shadow: 0.5vw   0.5vh min(1vw, 1vh) #0002;
-}
-
-sub {
-  font-size: min(5vh, 5vw);
+  text-shadow: 0.5vw 0.5vh min(1vw, 1vh) var(--shadow);
 }
 
 a {
@@ -61,14 +53,34 @@ a:hover {
 
 footer {
   width: 100vw;
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
-
-  display: flex;
-  justify-content: center;
+  font-size: min(5vh, 5vw);
+  line-height: min(5vh, 5vw);
 }
 
 footer a {
   text-decoration: none;
   font-size: 2rem;
+}
+
+
+
+#landing {
+  height: 95vh;
+  width: 100vw;
+  background-color: var(--bg);
+
+  align-content: center;
+}
+
+#resume:before {
+  content: '';
+  /* filter: drop-shadow(-0.5vh 0.5vw min(1vw, 1vh) var(--shadow)); */
+  border-top: 10vh solid var(--bg);
+  border-left: 100vw solid var(--accent-light);
+}
+
+#resume {
+  background: var(--accent-light);
 }
