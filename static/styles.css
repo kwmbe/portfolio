@@ -6,7 +6,7 @@
 
 html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Nerdfont';
-  background-color: var(--accent-light);
+  background-color: var(--bg);
   overflow-x: hidden;
 }
 
@@ -19,18 +19,24 @@ html, body {
 @media (prefers-color-scheme: dark) {
   :root {
     --bg:  #323;
-    --txt: #d9aaaa;
+    --bg2: #886C88;
+    --txt: #112;
+
+    --gradient: linear-gradient(45deg, var(--bg), var(--accent-dark));
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --bg:  #ccf;
-    --txt: #3535d8;
+    --bg2: #7171AA;
+    --txt: #090933;
+
+    --gradient: linear-gradient(45deg, var(--accent-light), var(--bg));
   }
 }
 
-h1, sub, footer {
+h1, sub {
   text-align: center;
 
   background: linear-gradient(45deg, var(--accent-light), var(--accent-dark));
@@ -43,6 +49,8 @@ h1, sub, footer {
 }
 
 a {
+  background: var(--gradient);
+  background-clip: text;
   color: transparent;
 }
 
@@ -52,35 +60,90 @@ a:hover {
 }
 
 footer {
-  width: 100vw;
+  text-align: center;
   position: fixed;
   bottom: 1rem;
-  font-size: min(5vh, 5vw);
-  line-height: min(5vh, 5vw);
+  width: 100vw;
 }
 
 footer a {
+  padding: .5em;
   text-decoration: none;
   font-size: 2rem;
 }
 
-
-
 #landing {
-  height: 95vh;
+  height: 89vh;
   width: 100vw;
   background-color: var(--bg);
 
   align-content: center;
 }
 
-#resume:before {
+section:nth-of-type(even):before {
+  display: block;
   content: '';
   /* filter: drop-shadow(-0.5vh 0.5vw min(1vw, 1vh) var(--shadow)); */
   border-top: 10vh solid var(--bg);
-  border-left: 100vw solid var(--accent-light);
+  border-left: 100vw solid var(--bg2);
 }
 
-#resume {
-  background: var(--accent-light);
+section:nth-of-type(even):after {
+  display: block;
+  content: '';
+  /* filter: drop-shadow(-0.5vh 0.5vw min(1vw, 1vh) var(--shadow)); */
+  border-top: 10vh solid var(--bg2);
+  border-right: 100vw solid var(--bg2); /* TODO: change to --bg when adding next section */
+}
+
+section:nth-of-type(even) {
+  background: var(--bg2);
+}
+
+#about-me ul {
+  margin: 1em;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  list-style-type: none;
+  gap: 2.5em;
+}
+
+#about-me li {
+  width: 50vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#about-me img {
+  height: 30vh;
+  border-radius: 1em;
+}
+
+#about-me ul ul {
+  flex-direction: column;
+  gap: .75em;
+}
+
+#about-me li li {
+  display: block;
+  text-align: left;
+
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--txt)
+}
+
+#about-me li li:before {
+  content: attr(icon);
+  padding: .5em;
+  font-size: 1.2em;
+
+  background: var(--gradient);
+  background-clip: text;
+  color: transparent;
+}
+
+#about-me a {
+  font-weight: 700;
 }
