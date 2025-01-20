@@ -22,7 +22,8 @@ html, body {
     --bg2: #886C88;
     --txt: #112;
 
-    --gradient: linear-gradient(45deg, var(--bg), var(--accent-dark));
+    --gradient:  linear-gradient(45deg, var(--bg), var(--accent-dark));
+    --gradient2: linear-gradient(45deg, var(--accent-light), var(--accent-dark))
   }
 }
 
@@ -32,7 +33,8 @@ html, body {
     --bg2: #7171AA;
     --txt: #090933;
 
-    --gradient: linear-gradient(45deg, var(--accent-light), var(--bg));
+    --gradient:  linear-gradient(45deg, var(--accent-light), var(--bg));
+    --gradient2: linear-gradient(45deg, var(--accent-light), var(--accent-dark))
   }
 }
 
@@ -62,17 +64,30 @@ a:hover {
 footer {
   text-align: center;
   position: fixed;
-  bottom: 1rem;
+  bottom: 0.5rem;
   width: 100vw;
 }
 
 footer a {
+  display: inline-block;
   padding: .5em;
   text-decoration: none;
   font-size: 2rem;
 }
 
+footer a::after {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  left: -2rem;
+  z-index: -1;
+  content: attr(icon);
+  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+}
+
 #landing {
+  margin: 0;
   height: 89vh;
   width: 100vw;
   background-color: var(--bg);
@@ -93,11 +108,15 @@ section:nth-of-type(even):after {
   content: '';
   /* filter: drop-shadow(-0.5vh 0.5vw min(1vw, 1vh) var(--shadow)); */
   border-top: 10vh solid var(--bg2);
-  border-right: 100vw solid var(--bg2); /* TODO: change to --bg when adding next section */
+  border-right: 100vw solid var(--bg); /* TODO: change to --bg when adding next section */
 }
 
 section:nth-of-type(even) {
   background: var(--bg2);
+}
+
+ul {
+  list-style-type: none;
 }
 
 #about-me ul {
@@ -105,7 +124,6 @@ section:nth-of-type(even) {
   display: flex;
   width: 100vw;
   justify-content: center;
-  list-style-type: none;
   gap: 2.5em;
 }
 
@@ -116,7 +134,7 @@ section:nth-of-type(even) {
 }
 
 #about-me img {
-  height: 30vh;
+  height: 20em;
   border-radius: 1em;
 }
 
@@ -146,4 +164,28 @@ section:nth-of-type(even) {
 
 #about-me a {
   font-weight: 700;
+}
+/* 
+#skills {
+  margin: 1em auto;
+} */
+
+#skills ul {
+  justify-content: center;
+  gap: 1em;
+  display: flex;
+}
+
+#skills li {
+  text-decoration: none;
+  font-size: 3em;
+  background: var(--gradient2);
+  background-clip: text;
+  color: transparent;
+}
+
+#skills::after {
+  content: "";
+  display: block;
+  height: 5rem;
 }
