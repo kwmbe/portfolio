@@ -144,6 +144,7 @@ ul {
   
   max-width: 60%;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
 }
 
 #experience li {
@@ -155,7 +156,7 @@ ul {
   box-shadow: 0.5vw 0.5vh min(1vw, 1vh) var(--shadow);
 
   
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   flex-shrink: 0;
   transform-origin: center center;
   transform: scale(1);
@@ -187,4 +188,50 @@ ul {
 #about-me a, 
 #experience a {
   font-weight: 700;
+}
+
+@media screen and (orientation: portrait) {
+
+  #about-me {
+    padding-top: 7.5vw;
+  }
+
+  #about-me > ul, #about-me > ul > li:has(img) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+
+  #about-me img {
+    width: 80vw;
+    height: 80vw;
+    margin: 0 10vw;
+  }
+
+  #about-me li:has(ul) {
+    width: 100vw;
+  }
+
+  #about-me li > ul {
+    transform: none;
+    position: static;
+    width: 100vw;
+  }
+
+  #about-me li > ul > li {
+    width: 80vw;
+    margin: 0 10vw;
+  }
+
+  #experience ul {
+    width: 80vw;
+    max-width: unset;
+  }
+
+  #experience ul li {
+    max-width: 70vw;
+    margin: .5em 15vw ;
+  }
 }
