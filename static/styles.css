@@ -192,8 +192,12 @@ ul {
 
 @media screen and (orientation: portrait) {
 
-  #about-me {
-    padding-top: 7.5vw;
+  body {
+    background-color: var(--bg2);
+  }
+
+  #landing {
+    background-color: var(--bg);
   }
 
   #about-me > ul, #about-me > ul > li:has(img) {
